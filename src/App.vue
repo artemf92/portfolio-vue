@@ -28,18 +28,15 @@ export default {
   mounted() {
   },
   created() {
-    this.resource = this.$resource('data.json')
-    this.resource.get().then(response => response.json()).then( res => this.$store.state.dataJson = res);
+    //this.resource = this.$resource('data.json')
+    //this.resource.get().then(response => response.json()).then( res => this.$store.state.dataJson = res);
   }
 }
 </script>
 
 <style lang="scss">
-body {
-  -webkit-text-size-adjust: none;
-}
-
 html {
+  box-sizing: border-box;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -47,6 +44,49 @@ html {
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling:touch;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  overflow-anchor: none;
+  overflow-x: hidden;
+  background-color: var(--color-white);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.is-hidden {
+  display: none !important; // stylelint-disable-line declaration-no-important
+}
+
+.btn-reset {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.list-reset {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 button:focus {
   outline: none;
   border: none;

@@ -4,10 +4,10 @@
         <div class="section__content--title">
           <div class="section__content--title-inner">
             <div class="section__content--title-word"
-                    v-for="(word, index) of arrRow" 
+                    v-for="(word, index) of arrRow"
                     :key="index">
-              <AnimItem :content="word" 
-                        :delay="index+2"
+              <AnimItem :content="word"
+                        :delay="index+30"
                         :typeAnim="'_textToTop'"
                         :preloader="true"/>
             </div>
@@ -67,7 +67,7 @@ export default {
       const containerRect = this.$el.getBoundingClientRect();
       if(containerRect.top < -window.innerHeight) return;
       const viewportOffsetTop = containerRect.top;
-      
+
       const viewportOffsetBottom = - viewportOffsetTop - 1;
 
       this.data.scrollFactor = viewportOffsetBottom / 3000;
@@ -136,7 +136,7 @@ export default {
       display: inline-block; margin-right: 10px;
     }
   }
-  
+
 }
 .section__cover {
   position: absolute;
