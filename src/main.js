@@ -6,6 +6,7 @@ import firebase from 'firebase/app';
 import Vuelidate from 'vuelidate';
 import 'normalize.css'
 import 'bootstrap/dist/css/bootstrap-grid.css'
+import 'bootstrap/dist/css/bootstrap-utilities.css'
 import LazyLoadDirective from "@/directives/LazyLoadDirective";
 import SectionScrollDirective from "@/directives/SectionScrollDirective";
 import AnimationOnScrollDirective from "@/directives/AnimationOnScrollDirective";
@@ -15,7 +16,7 @@ Vue.use(Vuelidate)
 Vue.use(firebase);
 Vue.directive("lazyload", LazyLoadDirective)
 // Vue.directive("animation", SectionScrollDirective)
-Vue.directive("animation", AnimationOnScrollDirective)git
+Vue.directive("animation", AnimationOnScrollDirective)
 
 var firebaseConfig = {
   apiKey: "AIzaSyCg0EEwV9GZog6xskwSP5aQMKu4vcAIhbA",

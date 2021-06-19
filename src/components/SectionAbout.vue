@@ -1,9 +1,9 @@
 <template>
   <section class="about">
-      <div class="section__content">
-        <div class="section__content--title">
-          <div class="section__content--title-inner">
-            <div class="section__content--title-word"
+      <div class="about__content">
+        <div class="about__title">
+          <div class="about__title-inner">
+            <div class="about__title-word"
                     v-for="(word, index) of arrRow"
                     :key="index">
               <AnimItem :content="word"
@@ -14,7 +14,7 @@
           </div>
          </div>
       </div>
-      <img class="section__cover" style="background-image: url('./images/cover1.jpg');" :style="coverTransform">
+      <img class="about__cover" style="background-image: url('./images/cover1.jpg');" :style="coverTransform">
       <span class="mouse-down">
         <span class="mouse-wheel"></span>
       </span>
@@ -87,38 +87,15 @@ export default {
   position: relative;
   padding: 40px 15px;
   overflow:hidden;
-  position: relative;
   background-color: transparent;
-}
-@media (min-width: 480px) {
-  .about {
-    padding: 70px 40px;
+
+  &__content {
+    color: #fff;
   }
-}
-@media (min-width: 720px) {
-  .about {
-    padding: 100px;
-    justify-content: flex-start;
-    align-items: flex-end;
-  }
-}
-// }
-// @media (min-width: 992px) {
-//   .about {
-//     padding: 100px;
-//     justify-content: flex-start;
-//     align-items: flex-end;
-//   }
-// }
-.section__content {
-  color: #fff;
-  &--title {
+  &__title {
     text-align: left;
     &-inner {
       max-width: 500px;
-      @media (min-width: 700px) {
-        // max-width: 800px;
-      }
 
       div {
         height: 4vw;
@@ -133,24 +110,36 @@ export default {
       }
     }
     &-word {
-      display: inline-block; margin-right: 10px;
+      display: inline-block;
+      margin-right: 10px;
     }
   }
-
+  &__cover {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: .9;
+    filter: brightness(0.2);
+    //transition: transform 0.2s ease-in-out;
+    background-size: cover;
+    background-position: 50%;
+    will-change: transform;
+  }
 }
-.section__cover {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  opacity: .9;
-  filter: brightness(0.2);
-  transition: transform 0.2 ease-in-out;
 
-  background-size: cover;
-  background-position: 50%;
-  will-change: transform;
+@media (min-width: 480px) {
+  .about {
+    padding: 70px 40px;
+  }
+}
+@media (min-width: 720px) {
+  .about {
+    padding: 100px;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
 }
 </style>

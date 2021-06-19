@@ -57,6 +57,7 @@ body {
   background-color: var(--color-white);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: none;
+  color: #282828;
 }
 
 img {
@@ -109,7 +110,7 @@ button:focus {
 }
 h2, h3 {
   // margin-top: 20px;
-  color: #000;
+  color: #282828;
 }
 .link:hover {
   color: #686868;
@@ -119,10 +120,12 @@ h2, h3 {
 section {
   position: relative;
   padding: 10px 15px;
-
   width: 100vw;
   z-index: 1;
   background-color: #fff;
+}
+.page {
+  height: calc(100vh - 30px);
 }
 .VueCarousel-dot {
   padding: 10px 5px!important;
@@ -132,12 +135,20 @@ section {
 }
 @media (min-width: 992px) {
   section {
-    height: calc(100vh - 30px);
+    //height: calc(100vh - 30px);
+    //height: 100vh;
     padding: 80px 50px;
   }
 }
 section[data-page] {
   animation: bgFadeIn 1s ease-in-out forwards;
+}
+.section__title {
+  font-size: 3em;
+  margin: 0;
+  @media (min-width: 992px) {
+    font-size: 4em;
+  }
 }
 .no-anim {
   animation: none!important;

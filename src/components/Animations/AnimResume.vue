@@ -3,7 +3,7 @@
     <h3>{{ title }}</h3>
     <div v-for="(element, index) in data" :key="index">
       <span class="time">{{ element.start }} - {{ element.finish || 'по настоящее время'}}</span>
-      <p>{{ element.org }}, {{ element.content }}</p>
+      <p class="resume__org">{{ element.org }}, {{ element.content }}</p>
     </div>
   </div>
 </template>
@@ -36,4 +36,9 @@ export default{
 </script>
 
 <style lang="scss">
+.resume {
+  &__org {
+    color: #808080;
+  }
+}
 </style>

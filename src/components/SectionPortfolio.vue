@@ -1,33 +1,33 @@
 <template>
   <div>
     <div class="container">
-      <AnimItem 
+      <AnimItem
         :typeAnim="'_textToTop'">
-        <h2 class="section__title text-left">Портфолио</h2>
+        <h2 class="section__title portfolio__title text-left">Портфолио</h2>
       </AnimItem>
-      <div class="portfolio-inner">
-        <div class="portfolio-desc">
-          <AnimItem 
+      <div class="portfolio__inner">
+        <div class="portfolio__desc">
+          <AnimItem
             :typeAnim="'_textToTop'"
             :delay="5">
-            <h3 class="portfolio__item--title" ref='slideTitle'>{{ $store.state.dataJson.slides[0]['title']}}</h3>
-            <div class="portfolio__item--desc" ref='slideContent'>{{ $store.state.dataJson.slides[0]['content']}}</div>
+            <h3 class="portfolio__subtitle" ref='slideTitle'>{{ $store.state.dataJson.slides[0]['title']}}</h3>
+            <div class="portfolio__item-desc" ref='slideContent'>{{ $store.state.dataJson.slides[0]['content']}}</div>
           </AnimItem>
           <AnimItem
             :typeAnim="'_textToTop'"
             :delay="10"
             class="msg-btn">
-              <a :href="$store.state.dataJson.slides[0]['href']" ref='slideHref' class="link btn-say">Перейти</a>
+              <a :href="$store.state.dataJson.slides[0]['href']" target="_blank" ref='slideHref' class="portfolio__link link btn-say">Перейти</a>
           </AnimItem>
         </div>
-        <div class="image-container">
+        <div class="portfolio__gallery">
           <carousel :perPage="1"
                     :speed="700"
                     @page-change="handleSlideClick"
                     >
-            <slide v-for="(slide, index) of $store.state.dataJson.slides" 
+            <slide v-for="(slide, index) of $store.state.dataJson.slides"
                   :key="index">
-                <ImageItem class="carousel-img"
+                <ImageItem class="portfolio__gallery-item"
                           :source="dir+slide.src"/>
             </slide>
           </carousel>
@@ -93,64 +93,52 @@ section.portfolio {
   color: grey;
 }
 .page_portfolio {
-  
   padding-top: 50px;
   @media (min-width: 992px) {
     padding-top: 0;
     height: 100vh;
   }
 }
-.section {
-  &__title {
-    font-size: 3em;
+.portfolio {
+  &__inner {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column-reverse;
+    padding-top: 30px;
     @media (min-width: 992px) {
-      font-size: 4em;
+      padding: 0;
+      flex-wrap: wrap;
+      flex-direction: row;
     }
-    // margin-bottom: 8%;
   }
-}
-.portfolio__item {
-  &--title {
+  &__subtitle {
     font-size: 18px;
-
     @media (min-width: 992px) {
       font-size: 24px;
     }
   }
-  &--desc {
+  &__item-desc {
     height: 60px;
   }
-}
-.portfolio-inner {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  flex-direction: column-reverse;
-  padding-top: 30px;
-  @media (min-width: 992px) {
-    padding: 0;
-    flex-wrap: wrap;
-    flex-direction: row;
+  &__desc {
+    width: 100%;
+    margin-top: 30px;
+    @media (min-width: 992px) {
+      margin-top: 0;
+      width: 50%;
+    }
   }
-}
-.portfolio-desc {
-  width: 100%;
-  margin-top: 30px;
-  @media (min-width: 992px) {
-    margin-top: 0;
-    width: 50%;
+  &__gallery {
+    width: 100%;
+    @media (min-width: 992px) {
+      width: 50%;
+    }
   }
-}
-.image-container {
-  width: 100%;
-  @media (min-width: 992px) {
-    width: 50%;
+  &__gallery-item {
+    max-width: 420px;
+    width: 100%;
   }
-}
-.carousel-img {
-  max-height: calc(100vh - 200px - 4em);
-  max-width: 100%;
-  width: auto;
 }
 .VueCarousel-dot-container {
   margin-top: 0!important;

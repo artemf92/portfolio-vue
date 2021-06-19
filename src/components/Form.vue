@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="page-contacts">
     <div class="container">
       <div class="row">
         <div class="col-sm-2 col-md-6">
-          <AnimItem 
+          <AnimItem
             class="contact__form--social"
             :typeAnim="'_fadeIn'"
             :delay="30">
             <div class="row">
               <div class="col-md-12">
-                <a href="https://vk.com/id7001520">
-                  <icon-vk 
+                <a class="page-contacts__link" href="https://vk.com/id7001520">
+                  <icon-vk
                     class="social-logo"
                     :size="size"/>
                   <div class="social-name">
@@ -18,21 +18,10 @@
                   </div>
                 </a>
               </div>
-              
+
               <div class="col-md-12">
-                <a href="https://www.facebook.com/information.sec0">
-                  <icon-fb 
-                    class="social-logo"
-                    :size="size"/>
-                  <div class="social-name">
-                    <a href="#">XXXXXXXXX</a>
-                  </div>
-                </a>
-              </div>
-              
-              <div class="col-md-12">
-                <a href="https://www.instagram.com/artemf92/">
-                  <icon-in 
+                <a class="page-contacts__link" href="https://www.instagram.com/artemf92/">
+                  <icon-in
                     class="social-logo"
                     :size="size"/>
                   <div class="social-name">
@@ -40,10 +29,10 @@
                   </div>
                 </a>
               </div>
-              
+
               <div class="col-md-12">
-                <a href="https://t.me/artemf92">
-                  <icon-tg 
+                <a class="page-contacts__link" href="https://t.me/artemf92">
+                  <icon-tg
                     class="social-logo"
                     :size="size"/>
                   <div class="social-name">
@@ -51,11 +40,11 @@
                   </div>
                 </a>
               </div>
-              
+
             </div>
           </AnimItem>
         </div>
-        <!-- <AnimItem 
+        <!-- <AnimItem
           :typeAnim="'_fadeIn'"
           :delay="27">
           <div class="v-hr"></div>
@@ -64,9 +53,9 @@
           <div class="contact__form">
             <form action="javascript:void(0)" ref="form" @submit.prevent="sendForm()">
               <div class="contact__form--input">
-                <input 
+                <input
                   type="text"
-                  name="name" 
+                  name="name"
                   placeholder="Ваше имя *"
                   v-model="name"
                   @blur="$v.name.$touch()"
@@ -74,7 +63,7 @@
                   <div class="error-msg" v-if="$v.name.$error">Это поле должно быть заполнено (мин. 2 символа).</div>
               </div>
               <div class="contact__form--input">
-                <input 
+                <input
                   type="email"
                   name="email"
                   placeholder="Ваш email *"
@@ -84,18 +73,18 @@
                   <div class="error-msg" v-if="$v.email.$error">Это поле должно содержать email</div>
               </div>
               <div class="contact__form--input">
-                <input 
+                <input
                   v-model="tel"
-                  type="tel" 
-                  pattern="+[0-9]{11}" 
-                  name="phone" 
+                  type="tel"
+                  pattern="+[0-9]{11}"
+                  name="phone"
                   placeholder="Ваш номер телефона"
                   ref="phone">
               </div>
               <div class="contact__form--input">
                 <textarea v-model="message" name="message" id="message" cols="30" rows="10" placeholder="Ваше сообщение"></textarea>
               </div>
-              <button 
+              <button
                 type="submit"
                 :disabled="$v.$invalid">Отправить</button>
             </form>
@@ -150,8 +139,8 @@ export default{
 
       this.$http
             .post('/mail.php', data)
-            .then(response => { 
-              if(response.status) 
+            .then(response => {
+              if(response.status)
               this.$refs.form.reset();
               return this.send = '_active' ;
             })
@@ -246,7 +235,7 @@ export default{
   display: flex;
   align-items: center;
   padding: 0 20px;
-  
+
   font-family: 'Josefin Sans', serif;
   color: white;
   font-size: 16px;
@@ -275,7 +264,7 @@ export default{
   }
   @media (min-width: 768px) {
     display: inline-block;
-  } 
+  }
 }
 .social-logo {
   display: inline-block;
@@ -325,6 +314,13 @@ button:disabled:hover {
     transform: translateX(100%);
     opacity: 0;
   }
-  
+
+}
+.page-contacts {
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

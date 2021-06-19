@@ -1,26 +1,26 @@
 <template>
-  <section class="footer">
-    <AnimItem 
+  <section class="contacts">
+    <AnimItem
       :type-anim="'_textToTop'"
       :content="'Контакты'"
       :delay="3"
       class="section__title text-left"/>
-        <div class="footer-wrapper">
-          <AnimItem 
+        <div class="contacts__wrapper">
+          <AnimItem
             :type-anim="'_slideToRight'"
             :class="animation"
             :data-delay="10"
             :data-duration="3">
           <hr class="hr"/>
         </AnimItem>
-        <AnimItem 
-          class="footer__top"
+        <AnimItem
+          class="contacts__top"
           :type-anim="'_textToTop'"
           :data-delay="14"
           :data-duration="1.4">
           <h2>Связаться со мной</h2>
         </AnimItem>
-        <AnimItem 
+        <AnimItem
             :type-anim="'_slideToRight'"
             :class="animation"
             :data-delay="12"
@@ -56,27 +56,32 @@ export default {
   computed: {
   },
   methods:{
-    
-    
+
+
   }
 }
 </script>
 
 <style lang="scss">
-.footer {
+.contacts {
   padding: 10px 0;
   @media (min-width: 992px) {
     padding: 80px 0;
   }
   .section__title {
     padding: 0 50px;
+    font-weight: 800;
+    color: #282828;
   }
-  h2 {
-    font-size: 2em;
-    font-weight: 200;
-    @media (min-width: 992px) {
-      font-size: 4em;
-    }
+  //h2 {
+  //  font-size: 2em;
+  //  font-weight: 200;
+  //  @media (min-width: 992px) {
+  //    font-size: 4em;
+  //  }
+  //}
+  &__wrapper {
+    margin: 15vh 0;
   }
   &-inner {
     display: flex;
@@ -85,17 +90,29 @@ export default {
     align-items: center;
     height: 100%;
   }
-}
-.footer-wrapper {
-  margin: 15vh 0;
-}
-.footer__top {
-  width: 100%;
-  height: 20vh;
-  background-color: #f3f3f3;
-  margin: -10px 0 -30px;
-  z-index: -1;
-  padding: 40px 0;
+  &__top {
+    width: 100%;
+    height: 15vh;
+    background-color: #f3f3f3;
+    margin: -10px 0 -30px;
+    z-index: -1;
+    padding: 40px 0;
+    @media (max-width: 1024px) {
+      padding: 20px 0;
+    }
+    h2 {
+      margin: 0;
+      font-size: 48px;
+      font-weight: 200;
+
+      @media (max-width: 1280px) {
+        font-size: 34px;
+      }
+      @media (max-width: 992px) {
+        font-size: 24px;
+      }
+    }
+  }
 }
 .msg-btn {
   width: 100%;
@@ -149,18 +166,7 @@ export default {
 .hr {
   border-top-color: rgba(0,0,0,.3);
 }
-.footer-bottom {
-  width: 100%;
-  height: 30px;
-  background-color: #2c2c2c;
-  // position: absolute;
-  color: #808080;
-  // bottom: 0;
-  // left: 0;
-  @media (min-width: 992px) {
-    // height: 30px;
-  }
-}
+
 .social-icon {
   width: 20px;
   display: inline-block;

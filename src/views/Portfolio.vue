@@ -1,9 +1,9 @@
 <template>
   <div>
-    <section>
+    <section class="page">
       <AnimItem
         :typeAnim="'_fadeIn'"
-        class="page_portfolio"
+        class="page-portfolio"
         :delay="12">
         <SectionPortfolio :typeAnim="'_textToTop'"/>
       </AnimItem>
@@ -29,5 +29,12 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .page-portfolio {
+    h2 {
+      margin: 0;
+    }
+    .carousel-img {
+      max-width: 50vh;
+    }
+  }
 </style>

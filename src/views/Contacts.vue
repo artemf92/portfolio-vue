@@ -1,11 +1,11 @@
 <template>
   <div>
     <SectionContacts
-      
+
       class="page_contacts"
       data-page
     >
-      <AnimItem 
+      <AnimItem
         :typeAnim="'_fadeIn'"
         :data-delay='25'
         >
@@ -39,23 +39,27 @@ export default {
 <style lang="scss">
 section[data-page] {
   animation: bgFadeIn 1s ease-in-out forwards;
-  .footer-wrapper {
+  .contacts__wrapper {
     animation: footerWrapper 1.3s ease-in-out forwards;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .hr {
       animation: scrollOut 1.5s ease-in-out 1s forwards;
     }
-    .footer__top {
-      opacity: 1;
-      animation: footerTopSlide .3s ease-in-out forwards;
-    }
+  }
+  .contacts__top {
+    opacity: 1;
+    animation: footerTopSlide .3s ease-in-out forwards;
   }
   .section__title {
     transition: color 3s ease-in-out;
     opacity: 1;
     animation: changeColorTitle 1s ease-in-out forwards;
   }
-  
-  .footer-bottom {
+
+  .footer {
     opacity: 1;
     animation: changeBgFooter 1s ease-in-out forwards;
     color: white;

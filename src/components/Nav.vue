@@ -2,7 +2,7 @@
   <div>
     <div id="nav" :class="animation">
       <div class="nav-wrapper">
-        <button 
+        <button
           class="home-link link"
           @click="$router.push({ name: 'Home'})"
           :class="openHamburger()"
@@ -16,19 +16,19 @@
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>
-          </button>  
+          </button>
         </div>
       </div>
     </div>
-    
+
     <Menu :class="openHamburger()"/>
   </div>
-  
-    
+
+
 </template>
 
 <script>
-import Menu from "./Menu.vue"; 
+import Menu from "./Menu.vue";
 
 export default {
   name: 'Nav',
@@ -69,7 +69,7 @@ export default {
         '_showLink': this.showLink,
       }
     },
-    
+
   },
   beforeMount() {
       this.home = location.pathname !== '/' ? true : false;
@@ -81,15 +81,15 @@ export default {
 
 <style lang="scss">
 #nav {
-  width: calc(100% - 100px);
+  //width: calc(100% - 100px);
+  width: 100%;
   // position: absolute;
   position: fixed;
-  top: 0;
+  top: 15px;
   right: 0;
   color: white;
-  height: 40px;
-  
-  transform: translateY(100%);
+  height: auto;
+  //transform: translateY(100%);
   opacity: 0;
   animation: fadeNav 1s ease forwards;
   animation-delay: 3.9s;
@@ -97,7 +97,7 @@ export default {
   mix-blend-mode: exclusion;
   color: black;
   @media (min-width: 992px) {
-   margin: 30px 50px 0;
+   padding: 0 50px;
    left: 0;
   }
   & h2 {
@@ -175,7 +175,7 @@ button {
 body::-webkit-scrollbar {
   width: 1em;
 }
- 
+
 body::-webkit-scrollbar-thumb {
   background-color: red;
   // outline: 1px solid slategrey;
@@ -195,10 +195,10 @@ body::-webkit-scrollbar-thumb {
   background-color: transparent;
   border: 0;
   margin: 0;
-  overflow: visible; 
+  overflow: visible;
   }
   .hamburger:hover {
-    opacity: 0.7; 
+    opacity: 0.7;
     .hamburger-inner:before {
       top: -14px;
     }
