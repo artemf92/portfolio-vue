@@ -34,6 +34,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 html {
   box-sizing: border-box;
   -ms-text-size-adjust: 100%;
