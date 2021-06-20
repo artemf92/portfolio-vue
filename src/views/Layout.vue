@@ -2,14 +2,14 @@
   <div>
     <Nav/>
     <router-view>
-      <FooterBottom/>  
+      <FooterBottom/>
     </router-view>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Nav";
-import FooterBottom from '../components/FooterBottom.vue'
+import FooterBottom from '../components/Footer.vue'
 
 export default {
   name: 'Layout',

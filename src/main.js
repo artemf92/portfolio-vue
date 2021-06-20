@@ -7,6 +7,7 @@ import Vuelidate from 'vuelidate';
 import 'normalize.css'
 import 'bootstrap/dist/css/bootstrap-grid.css'
 import 'bootstrap/dist/css/bootstrap-utilities.css'
+import './assets/js/vendors/smooth-scroll'
 import LazyLoadDirective from "@/directives/LazyLoadDirective";
 import SectionScrollDirective from "@/directives/SectionScrollDirective";
 import AnimationOnScrollDirective from "@/directives/AnimationOnScrollDirective";

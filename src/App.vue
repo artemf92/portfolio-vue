@@ -3,20 +3,19 @@
     <h1 class="pagetitle">Верстка сайтов HTML5 CSS3 Vue.js</h1>
     <Nav/>
     <router-view>
-      <FooterBottom/>
+      <Footer/>
     </router-view>
   </div>
 </template>
 
 <script>
 import Nav from "@/components/Nav";
-import FooterBottom from '@/components/FooterBottom.vue'
-
+import Footer from '@/components/Footer.vue'
 
 export default {
   components: {
     Nav,
-    FooterBottom
+    Footer
   },
   data: function() {
     return {
@@ -130,7 +129,7 @@ section {
 .VueCarousel-dot {
   padding: 10px 5px!important;
   @media (min-width: 992px) {
-    padding: 10px!important;
+    padding: 5px!important;
   }
 }
 @media (min-width: 992px) {

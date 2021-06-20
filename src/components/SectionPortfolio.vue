@@ -132,7 +132,7 @@ section.portfolio {
   &__gallery {
     width: 100%;
     @media (min-width: 992px) {
-      width: 50%;
+      width: 50vh;
     }
   }
   &__gallery-item {

@@ -10,7 +10,7 @@
           >Home</button>
         <div class="hamburger-menu">
           <button class="hamburger hamburger--spin" type="button"
-            @click="activeHamburger = !activeHamburger, showMenu = !showMenu, showLink = !showLink"
+            @click="activeHamburger = !activeHamburger, showMenu = !showMenu, showLink = !showLink; toggleMenu()"
             :class="openHamburger()"
             >
             <span class="hamburger-box">
@@ -45,6 +45,7 @@ export default {
     return{
       activeHamburger: false,
       showMenu: false,
+      hideMenu: false,
       animActive: {},
       colorNav: {
         color: 'white',
@@ -62,9 +63,15 @@ export default {
     }
   },
   methods: {
+    toggleMenu() {
+      const menu = document.querySelector('.menu')
+      console.log(menu.classList.contains('is-active'))
+      this.hideMenu = menu.classList.contains('is-active');
+    },
     openHamburger() {
       return {
         'is-active': this.activeHamburger,
+        'is-hide'  : this.hideMenu,
         '_showMenu': this.showMenu,
         '_showLink': this.showLink,
       }
