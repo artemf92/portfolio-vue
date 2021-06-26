@@ -65,7 +65,7 @@ export default {
                 0% {
                     width: 100%;
                 }
-                
+
                 100% {
                     width: 0;
                 }
@@ -74,7 +74,7 @@ export default {
         &:after {
             content:'';
             width: 100%;
-            height: 80%;
+            height: 85%;
             background-color: white;
             display: block;
             position: absolute;

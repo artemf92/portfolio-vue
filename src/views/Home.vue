@@ -2,13 +2,13 @@
   <div class="home">
     <Preloader/>
     <SectionAbout/>
-    <SectionResume/>
+<!--    <SectionResume/>-->
     <section >
       <SectionPortfolio :typeAnim="'_slideToLeft'"
                       class="portfolio h-100" />
     </section>
     <SectionContacts>
-      <AnimItem 
+      <AnimItem
           class="msg-btn"
           :type-anim="'_textToTop'"
           :data-delay="15">

@@ -5,6 +5,7 @@
     <router-view>
       <Footer/>
     </router-view>
+    <div class="cursor"  :class="{ click: cursorClick }" :style="{ top: cursorPositionY, left: cursorPositionX, opacity: cursorShow}"></div>
   </div>
 </template>
 
@@ -15,14 +16,33 @@ import Footer from '@/components/Footer.vue'
 export default {
   components: {
     Nav,
-    Footer
+    Footer,
   },
   data: function() {
     return {
       resource: null,
+      cursorX: 0,
+      cursorY: 0,
+      cursorShow: 0,
+      cursorClick: false,
+      cursorPositionX: null,
+      cursorPositionY: null,
     }
   },
   methods: {
+    cursorMove($event) {
+      this.cursorShow = 1;
+      this.cursorX = $event.clientX;
+      this.cursorY = $event.clientY - 30;
+      this.cursorPositionX = `${this.cursorX}px`;
+      this.cursorPositionY = `${this.cursorY}px`;
+    },
+    cursorClickFn() {
+      this.cursorClick = true;
+      setTimeout(() => {
+        this.cursorClick = false;
+      }, 1000);
+    }
   },
   mounted() {
   },
@@ -112,16 +132,16 @@ h2, h3 {
   // margin-top: 20px;
   color: #282828;
 }
-.link:hover {
-  color: #686868;
-  transition: .3s ease-in;
-  text-decoration: none;
-}
+//.link:hover {
+//  color: #686868;
+//  transition: .3s ease-in;
+//  text-decoration: none;
+//}
 section {
   position: relative;
   padding: 10px 15px;
   width: 100vw;
-  z-index: 1;
+  //z-index: 1;
   background-color: #fff;
 }
 .page {
@@ -145,9 +165,12 @@ section[data-page] {
 }
 .section__title {
   font-size: 3em;
-  margin: 0;
+  margin: 0 0 40px;
   @media (min-width: 992px) {
     font-size: 4em;
+  }
+  @media (max-width: 992px) {
+    margin: 0 0 20px;
   }
 }
 .no-anim {
@@ -188,7 +211,46 @@ section[data-page] {
 [data-a=_slideToRight]._active {
   animation: slideToRight 1.4s ease-in-out forwards;
 }
-
+.cursor {
+  z-index: 999999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: transparent;
+  transform: translateX(-50%);
+  transition: opacity .3s ease-in-out;
+  &:before {
+    width: 3px;
+    height: 3px;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    transition: width .5s ease-in-out, height .5s ease-in-out;
+  }
+  &.click {
+    &:before {
+      animation: click 1s ease-in-out;
+    }
+  }
+}
+@keyframes click {
+  30% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 3px;
+    height: 3px;
+  }
+}
 @keyframes slideToLeft {
   0% {
     transform: translateX(100%);

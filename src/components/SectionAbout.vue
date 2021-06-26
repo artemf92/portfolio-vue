@@ -79,6 +79,7 @@ export default {
 
 <style lang="scss">
 .about {
+  z-index: 1;
   width: 100%;
   height: 100vh;
   display: flex;

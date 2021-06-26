@@ -118,5 +118,11 @@ export default new Vuex.Store({
     },
     "isHome": false,
     "menuHidden": true,
+    "modals": {
+      modalPreview: {
+        isShow: false,
+        animation: 'fadeIn',
+      }
+    }
   }
 })

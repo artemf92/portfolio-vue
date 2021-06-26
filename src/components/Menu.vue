@@ -2,7 +2,7 @@
   <div class="menu">
     <div class="menu__bg"></div>
     <div class="menu__wrapper">
-       <button class="link menu__link" @click="$router.push({ name: 'Resume' })"><span>Резюме</span></button>
+<!--       <button class="link menu__link" @click="$router.push({ name: 'Resume' })"><span>Резюме</span></button>-->
        <button class="link menu__link" @click="$router.push({ name: 'Portfolio' })"><span>Портфолио</span></button>
        <button class="link menu__link" @click="$router.push({ name: 'Contacts' })"><span>Контакты</span></button>
       <a href="https://www.instagram.com/artemf92/" class="menu__icon-social">
@@ -70,6 +70,10 @@ export default{
   opacity: 1;
   transition: all 0.8s cubic-bezier(1,.42,.43,1);
   z-index: 10;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -khtml-border-radius: 50%;
   @media (min-width: 768px) {
     width: 30%;
   }
@@ -83,16 +87,27 @@ export default{
     transition: 1s ease-in;
     cursor: pointer;
     overflow: hidden;
-    transition: opacity .5s ease-in-out;
+    position: relative;
     span {
-      display: block;
-      transition: transform .5s ease-in-out;
+      display: inline-block;
+      transition: transform .4s ease-in-out;
       transform: translateY(150%);
-    }
-    &:hover {
-      color: #a19f9f;
-      transition: .2s ease-in;
-      text-decoration: none;
+      &:before {
+        display: inline-block;
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: width .4s ease-in-out;
+      }
+      &:hover {
+        &:before {
+          width: 100%;
+        }
+      }
     }
   }
   &__wrapper {
@@ -114,6 +129,10 @@ export default{
     right: 35px;
     transition: 1s ease-in-out;
     border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -khtml-border-radius: 50%;
   }
   &__icon {
     overflow: hidden;
@@ -124,13 +143,31 @@ export default{
     margin: 0 auto;
     transition: transform .5s ease-in-out;
     transform: translateY(150%);
-  }
-  &__icon:hover svg {
-    fill: #686868;
+
   }
   &__icon-social {
-    display: block;
-    margin-bottom: 10px;
+    display: inline-flex;
+    margin: 0 auto 20px;
+    position: relative;
+    &:first-child {
+      margin-top: 15px;
+    }
+    &:before {
+      display: inline-block;
+      position: absolute;
+      bottom: -5px;
+      left: -1px;
+      width: 0;
+      content: '';
+      height: 2px;
+      background-color: currentColor;
+      transition: width .4s ease-in-out;
+    }
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
   }
   &.is-active {
     display: flex;
@@ -142,12 +179,12 @@ export default{
 
     @for $i from 1 through 3 {
       .menu__link:nth-child(#{$i}) span {
-        transition: transform .5s ease-in-out;
-        animation: showLink .5s ease-in-out #{$i * math.div(3, 10)}s forwards;
+        transition: transform .3s ease-in-out;
+        animation: showLink .3s ease-in-out #{$i * math.div(3, 10)}s forwards;
       }
       .menu__icon-social:nth-of-type(#{$i}) svg {
-        transition: transform .5s ease-in-out;
-        animation: showLink .5s ease-in-out #{1 + math.div($i, 10)}s forwards;
+        transition: transform .3s ease-in-out;
+        animation: showLink .3s ease-in-out #{1 + math.div($i, 10)}s forwards;
       }
     }
   }

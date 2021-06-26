@@ -1,8 +1,9 @@
 <template>
     <img v-lazyload class="image__item"
-        :data-url="source" 
+        :data-url="source"
         alt=""
-        :style="coverTransform">
+        :style="coverTransform"
+        @click="showModal">
 </template>
 
 <script>
@@ -17,8 +18,14 @@ export default{
     coverTransform: {
       type: Object,
       required: false
-    }
+    },
   },
+  methods: {
+    showModal() {
+      console.log('CLICK')
+      this.$emit('showModal', {show: true,animation: 'fadeInUp', src: this.source})
+    }
+  }
 }
 </script>
 

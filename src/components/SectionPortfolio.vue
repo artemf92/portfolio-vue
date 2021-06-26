@@ -21,19 +21,33 @@
           </AnimItem>
         </div>
         <div class="portfolio__gallery">
-          <carousel :perPage="1"
-                    :speed="700"
-                    @page-change="handleSlideClick"
-                    >
+          <carousel
+              :perPage="1"
+              :speed="700"
+              @page-change="handleSlideClick"
+          >
             <slide v-for="(slide, index) of $store.state.dataJson.slides"
                   :key="index">
                 <ImageItem class="portfolio__gallery-item"
-                          :source="dir+slide.src"/>
+                          :source="dir+slide.src"
+                           @showModal="showModal"
+                           />
             </slide>
           </carousel>
         </div>
       </div>
     </div>
+    <modal ref="modal">
+      <carousel
+          :perPage="1"
+          :speed="700"
+          class="modal-preview"
+      >
+        <slide>
+          <img class="modal-preview__img" :src="source" alt="">
+        </slide>
+      </carousel>
+    </modal>
   </div>
 </template>
 
@@ -41,6 +55,8 @@
 import { Carousel, Slide } from 'vue-carousel';
 import ImageItem from './ImageItem';
 import AnimItem from './Animations/AnimItem';
+import modal from './Modals/Modal';
+
 
 export default {
   name: 'SectionPortfolio',
@@ -49,6 +65,7 @@ export default {
     Slide,
     ImageItem,
     AnimItem,
+    modal,
   },
   props: {
     typeAnim: {
@@ -58,10 +75,10 @@ export default {
   },
   data(){
     return{
-      dir: './images/'
+      dir: './images/',
+      show: true,
+      source: '',
     }
-  },
-  computed: {
   },
   methods:{
     handleSlideClick(num) {
@@ -82,6 +99,11 @@ export default {
         this.$refs.slideContent.style.animation = `barabanIn .5s ease forwards`;
       },650)
       this.$refs.slideHref.href = this.$store.state.dataJson.slides[num]['href'];
+    },
+    showModal(options) {
+      this.$refs.modal.show = options.show;
+      this.$refs.modal.animation = options.animation;
+      this.source = options.src;
     }
   },
 }
@@ -137,11 +159,18 @@ section.portfolio {
   }
   &__gallery-item {
     max-width: 420px;
+    cursor: pointer;
     width: 100%;
   }
 }
 .VueCarousel-dot-container {
   margin-top: 0!important;
+}
+.modal-preview {
+  &__img {
+    display: block;
+    margin: 0 auto;
+  }
 }
 @keyframes barabanOut{
   100% {
