@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
   .page-portfolio {
     h2 {
-      margin: 0;
+      margin: 0 0 20px;
     }
     .carousel-img {
       max-width: 50vh;

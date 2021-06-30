@@ -14,7 +14,7 @@
           :data-delay="15">
         <!-- <router-link to="/contacts" class="link btn-say">Say Hello
         </router-link> -->
-        <button class="link btn-say" @click="$router.push({ name: 'Contacts' })">Say Hello</button>
+        <button class="link btn-reset btn-say" @click="$router.push({ name: 'Contacts' })">Say Hello</button>
       </AnimItem>
     </SectionContacts>
     <slot/>
@@ -35,7 +35,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      resource: null
+      resource: null,
     }
   },
   components: {
@@ -49,6 +49,8 @@ export default {
   },
   beforeCreate() {
     this.$store.state.isHome = false;
+  },
+  methods: {
   }
 }
 </script>
@@ -67,5 +69,4 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
 </style>

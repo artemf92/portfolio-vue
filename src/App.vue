@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" @mousemove="cursorMove">
     <h1 class="pagetitle">Верстка сайтов HTML5 CSS3 Vue.js</h1>
     <Nav/>
     <router-view>
       <Footer/>
     </router-view>
-    <div class="cursor"  :class="{ click: cursorClick }" :style="{ top: cursorPositionY, left: cursorPositionX, opacity: cursorShow}"></div>
+<!--    <div class="cursor"></div>-->
   </div>
 </template>
 
@@ -31,18 +31,18 @@ export default {
   },
   methods: {
     cursorMove($event) {
-      this.cursorShow = 1;
-      this.cursorX = $event.clientX;
-      this.cursorY = $event.clientY - 30;
-      this.cursorPositionX = `${this.cursorX}px`;
-      this.cursorPositionY = `${this.cursorY}px`;
+      // this.cursorShow = 1;
+      // this.cursorX = $event.clientX;
+      // this.cursorY = $event.clientY - 30;
+      // this.cursorPositionX = `${this.cursorX}px`;
+      // this.cursorPositionY = `${this.cursorY}px`;
     },
     cursorClickFn() {
       this.cursorClick = true;
       setTimeout(() => {
         this.cursorClick = false;
       }, 1000);
-    }
+    },
   },
   mounted() {
   },
@@ -54,6 +54,15 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --brightness-cover: brightness(0.2);
+  --main-theme-color: #fff;
+  --main-font-color: #282828;
+  --secondary-theme-color: #f3f3f3;
+  --msg-btn-bg: rgba(0 0 0 / 10%);
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+}
 
 html {
   box-sizing: border-box;
@@ -74,7 +83,7 @@ html {
 body {
   overflow-anchor: none;
   overflow-x: hidden;
-  background-color: var(--color-white);
+  background-color: var(--main-theme-color);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: none;
   color: #282828;
@@ -130,7 +139,7 @@ button:focus {
 }
 h2, h3 {
   // margin-top: 20px;
-  color: #282828;
+  color: var(--main-font-color);
 }
 //.link:hover {
 //  color: #686868;
@@ -142,7 +151,8 @@ section {
   padding: 10px 15px;
   width: 100vw;
   //z-index: 1;
-  background-color: #fff;
+  background-color: var(--main-theme-color);
+  transition: background-color .3s ease-in-out;
 }
 .page {
   height: calc(100vh - 30px);
@@ -214,8 +224,8 @@ section[data-page] {
 .cursor {
   z-index: 999999;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: var(--mouse-y);
+  left: var(--mouse-x);
   width: 50px;
   height: 50px;
   border: 1px solid #fff;

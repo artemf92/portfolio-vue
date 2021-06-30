@@ -104,7 +104,7 @@ export default {
       this.$refs.modal.show = options.show;
       this.$refs.modal.animation = options.animation;
       this.source = options.src;
-    }
+    },
   },
 }
 </script>

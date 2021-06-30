@@ -82,6 +82,7 @@ export default{
     font-size: 1.6em;
     background-color: transparent;
     outline: none;
+    color: #fff;
     border: none;
     padding: 0.4em;
     transition: 1s ease-in;

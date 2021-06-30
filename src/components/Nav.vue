@@ -8,6 +8,7 @@
           :class="openHamburger()"
           v-if="this.$store.state.isHome"
           >Home</button>
+        <button class="btn-reset theme-toggle" :class="{ 'is-toggle' : themeDark }" @click="changeTheme" aria-label="Переключить тему"></button>
         <div class="hamburger-menu">
           <button class="hamburger hamburger--spin" type="button"
             @click="activeHamburger = !activeHamburger, showMenu = !showMenu, showLink = !showLink; toggleMenu()"
@@ -57,9 +58,10 @@ export default {
       data: {
         height: 0,
         width: 0,
-        scrollFactor: 0
+        scrollFactor: 0,
       },
       home: null,
+      themeDark: false,
     }
   },
   methods: {
@@ -76,7 +78,22 @@ export default {
         '_showLink': this.showLink,
       }
     },
-
+    changeTheme() {
+      if (!this.themeDark) {
+        document.documentElement.style.setProperty('--main-theme-color', '#000')
+        document.documentElement.style.setProperty('--main-font-color', '#fff')
+        document.documentElement.style.setProperty('--secondary-theme-color', '#282828')
+        document.documentElement.style.setProperty('--brightness-cover', 'brightness(0.1)')
+        document.documentElement.style.setProperty('--msg-btn-bg', 'rgba(255 255 255 / 80%)')
+      } else {
+        document.documentElement.style.setProperty('--main-theme-color', '#fff')
+        document.documentElement.style.setProperty('--secondary-theme-color', '#f3f3f3')
+        document.documentElement.style.setProperty('--main-font-color', '#282828')
+        document.documentElement.style.setProperty('--brightness-cover', 'brightness(0.2)')
+        document.documentElement.style.setProperty('--msg-btn-bg', 'rgba(0 0 0 / 10%)')
+      }
+      this.themeDark = !this.themeDark;
+    }
   },
   beforeMount() {
       this.home = location.pathname !== '/' ? true : false;
@@ -86,7 +103,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #nav {
   //width: calc(100% - 100px);
   width: 100%;
@@ -125,6 +142,7 @@ export default {
     display: flex;
     // justify-content: space-between;
     justify-content: flex-end;
+    align-items: center;
     transition: .3s ease-in;
   }
   a {
@@ -267,4 +285,28 @@ body::-webkit-scrollbar-thumb {
     bottom: 0;
     transform: rotate(-90deg);
     transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  .theme-toggle {
+    position: relative;
+    width: 35px;
+    height: 20px;
+    border-radius: 12px;
+    border: 3px solid #fff;
+
+    &.is-toggle:before {
+      left: 15px;
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: .3s cubic-bezier(.17,.67,.3,1);
+    }
+  }
 </style>

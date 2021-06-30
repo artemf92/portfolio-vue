@@ -123,7 +123,7 @@ export default {
     left: 0;
     z-index: -1;
     opacity: .9;
-    filter: brightness(0.2);
+    filter: var(--brightness-cover);
     //transition: transform 0.2s ease-in-out;
     background-size: cover;
     background-position: 50%;

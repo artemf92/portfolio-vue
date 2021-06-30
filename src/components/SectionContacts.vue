@@ -5,7 +5,7 @@
       :content="'Контакты'"
       :delay="3"
       class="section__title text-left"/>
-        <div class="contacts__wrapper">
+      <div class="contacts__wrapper">
           <AnimItem
             :type-anim="'_slideToRight'"
             :class="animation"
@@ -71,7 +71,7 @@ export default {
   .section__title {
     padding: 0 50px;
     font-weight: 800;
-    color: #282828;
+    color: var(--main-font-color);
   }
   //h2 {
   //  font-size: 2em;
@@ -93,7 +93,7 @@ export default {
   &__top {
     width: 100%;
     height: 15vh;
-    background-color: #f3f3f3;
+    background-color: var(--secondary-theme-color);
     margin: -10px 0 -30px;
     z-index: -1;
     padding: 40px 0;
@@ -123,8 +123,8 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 25px auto;
-  color: black;
-  border: 1px solid rgba(0,0,0,.4);
+  color: var(--main-font-color);
+  border: 1px solid var(--msg-btn-bg);
   transition: .3s ease-in-out;
 
   @media (min-width: 991px) {
@@ -134,7 +134,7 @@ export default {
   }
   cursor: pointer;
   .link {
-    color: black;
+    color: var(--main-font-color);
     text-transform: uppercase;
   }
 }
