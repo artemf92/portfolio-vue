@@ -132,8 +132,8 @@ export default {
     height: 80px;
     margin: 55px auto;
   }
-  cursor: pointer;
   .link {
+    cursor: pointer;
     color: var(--main-font-color);
     text-transform: uppercase;
   }

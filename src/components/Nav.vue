@@ -153,6 +153,10 @@ export default {
       color: #fff;
     }
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 #nav._active > .nav-wrapper {
   transform: translateY(-120%)
@@ -195,7 +199,6 @@ export default {
 
 button {
   color: #fff;
-  cursor: pointer;
 }
 
 body::-webkit-scrollbar {
