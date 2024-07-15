@@ -1,4 +1,4 @@
-# repartfolio
+# rePortfolio v2
 
 ## Project setup
 ```
