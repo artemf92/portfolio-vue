@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import SectionHero from '@/components/SectionHero.vue';
+// import SectionHero from '@/components/SectionHero.vue';
 import Preloader from '@/components/Preloader.vue';
 import SectionAbout from '@/components/SectionAbout.vue';
-import SectionResume from '@/components/SectionResume.vue';
+// import SectionResume from '@/components/SectionResume.vue';
 import SectionPortfolio from '@/components/SectionPortfolio.vue';
 import SectionContacts from '@/components/SectionContacts.vue';
 
@@ -39,10 +39,10 @@ export default {
     }
   },
   components: {
-    SectionHero,
+    // SectionHero,
     Preloader,
     SectionAbout,
-    SectionResume,
+    // SectionResume,
     SectionPortfolio,
     SectionContacts,
     AnimItem,

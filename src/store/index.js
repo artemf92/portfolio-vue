@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   "state": {
     "dataJson": {
-      "home" : "Верстка сайтов на HTML и CSS HTML5 CSS3 JavaScript Vue.js.",
+      "home" : "Разработка сайтов Bitrix, Wordpress, React, Vue.js",
       "learns" : [ {
         "content" : "Vue.js полный курс",
         "finish" : "",
@@ -101,7 +101,7 @@ export default new Vuex.Store({
       } ],
       "works" : [ {
         "content" : "веб-разработчик",
-        "finish" : "",
+        "finish" : "по н.в.",
         "org" : "ИП Ольховик",
         "start" : "Октябрь 2020"
       }, {

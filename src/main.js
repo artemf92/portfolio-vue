@@ -17,11 +17,12 @@ Vue.config.productionTip = false
 Vue.use(Vuelidate)
 Vue.use(firebase);
 Vue.directive("lazyload", LazyLoadDirective)
-// Vue.directive("animation", SectionScrollDirective)
+Vue.directive("animation", SectionScrollDirective)
 Vue.directive("animation", AnimationOnScrollDirective)
+console.log(process.env.VUE_APP_API_KEY);
 
 var firebaseConfig = {
-  apiKey: "AIzaSyCg0EEwV9GZog6xskwSP5aQMKu4vcAIhbA",
+  apiKey: process.env.VUE_APP_API_KEY,
   authDomain: "portfolio-98b76.firebaseapp.com",
   databaseURL: "https://portfolio-98b76-default-rtdb.firebaseio.com",
   projectId: "portfolio-98b76",

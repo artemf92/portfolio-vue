@@ -116,7 +116,7 @@ export default {
   //transform: translateY(100%);
   opacity: 0;
   animation: fadeNav 1s ease forwards;
-  animation-delay: 3.9s;
+  animation-delay: .9s;
   z-index: 99;
   mix-blend-mode: exclusion;
   color: black;
@@ -195,6 +195,7 @@ export default {
 
 button {
   color: #fff;
+  cursor: pointer;
 }
 
 body::-webkit-scrollbar {

@@ -58,6 +58,7 @@
                   name="name"
                   placeholder="Ваше имя *"
                   v-model="name"
+                  required
                   @blur="$v.name.$touch()"
                   :class="{ 'error' : $v.name.$error }">
                   <div class="error-msg" v-if="$v.name.$error">Это поле должно быть заполнено (мин. 2 символа).</div>
@@ -68,6 +69,7 @@
                   name="email"
                   placeholder="Ваш email *"
                   v-model="email"
+                  required
                   :class="{ 'error' : $v.email.$error } "
                   @blur="$v.email.$touch()">
                   <div class="error-msg" v-if="$v.email.$error">Это поле должно содержать email</div>
@@ -94,7 +96,7 @@
 
       <div class="toast"
             :class="send">
-          Ваше сообщение отправлено!
+          {{message}}
       </div>
     </div>
   </div>
@@ -104,11 +106,11 @@
 import AnimItem from './Animations/AnimItem.vue';
 import iconIn from './Icons/inst.vue';
 import iconTg from './Icons/tg.vue';
-import iconFb from './Icons/fb.vue';
+// import iconFb from './Icons/fb.vue';
 import iconVk from './Icons/vk.vue';
 import { required, minLength, email } from 'vuelidate/lib/validators';
 import InputMask from 'inputmask';
-import querystring from 'querystring'
+// import querystring from 'querystring'
 
 export default{
   name: 'Form',
@@ -116,7 +118,7 @@ export default{
     AnimItem,
     iconIn,
     iconTg,
-    iconFb,
+    // iconFb,
     iconVk,
   },
   data(){
@@ -130,22 +132,27 @@ export default{
     }
   },
   methods: {
-    sendForm() {
+    async sendForm() {
       const data = new FormData();
       data.append('name', this.name);
       data.append('email', this.email);
       if (this.message != '') data.append('message', this.message);
       if (this.tel != '') data.append('tel', this.tel);
 
-      this.$http
-            .post('/mail.php', data)
-            .then(response => {
-              if(response.status)
-              this.$refs.form.reset();
-              return this.send = '_active' ;
-            })
-            .catch( error => console.log(error));
-      this.send = '';
+      const response = await fetch('/mail.php', {
+        method: 'POST',
+        body: data
+      })
+
+      if (!response.ok) {
+        this.send = '_active bg-danger';
+        this.message = 'Упс! Что-то пошло не так.. Попробуйте написать мне в мессенджер'
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      this.$refs.form.reset();
+      this.send = '_active';
+      this.message = 'Ваше сообщение отправлено!';
     }
   },
   validations: {
@@ -159,7 +166,7 @@ export default{
     }
   },
   mounted() {
-    var imPhone = new Inputmask("+7(999) 999-99-99");
+    var imPhone = new InputMask("+7(999) 999-99-99");
     imPhone.mask(this.$refs.phone);
   }
 }

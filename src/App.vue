@@ -1,6 +1,6 @@
 <template>
-  <div id="app" @mousemove="cursorMove">
-    <h1 class="pagetitle">Верстка сайтов HTML5 CSS3 Vue.js</h1>
+  <div id="app">
+    <h1 class="pagetitle">Разработка сайтов Bitrix, Wordpress, React, Vue.js</h1>
     <Nav/>
     <router-view>
       <Footer/>
@@ -30,13 +30,13 @@ export default {
     }
   },
   methods: {
-    cursorMove($event) {
-      // this.cursorShow = 1;
-      // this.cursorX = $event.clientX;
-      // this.cursorY = $event.clientY - 30;
-      // this.cursorPositionX = `${this.cursorX}px`;
-      // this.cursorPositionY = `${this.cursorY}px`;
-    },
+    // cursorMove($event) {
+    //   this.cursorShow = 1;
+    //   this.cursorX = $event.clientX;
+    //   this.cursorY = $event.clientY - 30;
+    //   this.cursorPositionX = `${this.cursorX}px`;
+    //   this.cursorPositionY = `${this.cursorY}px`;
+    // },
     cursorClickFn() {
       this.cursorClick = true;
       setTimeout(() => {

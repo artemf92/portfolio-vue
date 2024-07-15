@@ -23,7 +23,7 @@ export default {
     align-items: center;
     justify-content: center;
     animation: loading 1.2s ease-in-out forwards;
-    animation-delay: 3.5s;
+    animation-delay: .5s;
     pointer-events: none;
 
     @keyframes loading {
@@ -57,7 +57,7 @@ export default {
             display: block;
             position: absolute;
             bottom: 0;
-            animation: bottomBlock 2s ease-out forwards;
+            animation: bottomBlock 1.3s ease-out forwards;
             animation-delay: 1.5s;
 
 

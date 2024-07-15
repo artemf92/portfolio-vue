@@ -7,7 +7,7 @@
     >
       <AnimItem
         :typeAnim="'_fadeIn'"
-        :data-delay='25'
+        :data-delay='15'
         >
         <Form />
       </AnimItem>

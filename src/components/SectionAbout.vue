@@ -7,7 +7,7 @@
                     v-for="(word, index) of arrRow"
                     :key="index">
               <AnimItem :content="word"
-                        :delay="index+30"
+                        :delay="index+10"
                         :typeAnim="'_textToTop'"
                         :preloader="true"/>
             </div>
@@ -49,12 +49,14 @@ export default {
     const eventHandle = () => requestAnimationFrame(this.handleScroll);
     window.addEventListener('touchmove', eventHandle); //
     window.addEventListener('mousewheel', eventHandle);
+    window.addEventListener('wheel', eventHandle);
     this.$on(`hook:destroyed`, () => {
-    window.removeEventListener('scroll', eventHandle);
+      window.removeEventListener('scroll', eventHandle);
     });
   },
   unmounted() {
-      window.removeEventListener('mousewheel', handleScroll)
+      window.removeEventListener('mousewheel', this.handleScroll)
+      window.removeEventListener('wheel', this.handleScroll)
   },
   created() {
     setTimeout(() => {
